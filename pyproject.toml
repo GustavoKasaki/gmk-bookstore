@@ -14,6 +14,19 @@ dependencies = [
     "djangorestframework (>=3.16.0,<4.0.0)"
 ]
 
+[tool.poetry]
+name = "bookstore"
+version = "0.1.0"
+description = "Bookstore API"
+authors = ["GustavoKasaki <gmkasaki@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+django = "^5.2"
+djangorestframework = "^3.16.0"
+pytest = "^8.4.1"
+factory-boy = "^3.3.3"
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
