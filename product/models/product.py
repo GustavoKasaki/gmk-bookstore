@@ -1,0 +1,13 @@
+from django.db import models
+
+from product.models.category import Category
+
+class Product(models.Model):
+    name = models.CharField(max_length=100)
+    description = models.TextField(max_length=500, blank=True, null=True)
+    price = models.FloatField(blank=True, null=True)
+    active = models.BooleanField(default=True)
+    category = models.ManyToManyField(Category)
+
+    def __str__(self):
+        return self.name
