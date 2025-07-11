@@ -16,14 +16,14 @@ def test_order_creation():
 
     # First product creation
     product1 = Product.objects.create(
-        name="Test Product",
+        title="Test Product",
         description="Test Description",
         price=Decimal("5.50")
     )
 
     # Second product creation
     product2 = Product.objects.create(
-        name="Test Product 2",
+        title="Test Product 2",
         description="Test Description 2",
         price=Decimal("59.50")
     )
