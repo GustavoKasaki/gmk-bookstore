@@ -16,13 +16,13 @@ def test_order_serializer():
 
     # Products creation
     product1 = Product.objects.create(
-        name="Test Product",
+        title="Test Product",
         description="Test Description",
         price=5.50,
         active=True
     )
     product2 = Product.objects.create(
-        name="Test Product 2",
+        title="Test Product 2",
         description="Test Description 2",
         price=59.50,
         active=True
@@ -30,13 +30,13 @@ def test_order_serializer():
 
     # Categories creation
     category1 = Category.objects.create(
-        name="Test Category",
+        title="Test Category",
         slug="test-category",
         description="Test Category Description",
         active=True
     )
     category2 = Category.objects.create(
-        name="Test Category 2",
+        title="Test Category 2",
         slug="test-category-2",
         description="Test Category Description 2",
         active=True
@@ -58,15 +58,15 @@ def test_order_serializer():
     assert data['total'] == 65
     assert len(data['product']) == 2
 
-    product1_data = next(product for product in data['product'] if product['name'] == 'Test Product')
-    assert product1_data['name'] == 'Test Product'
+    product1_data = next(product for product in data['product'] if product['title'] == 'Test Product')
+    assert product1_data['title'] == 'Test Product'
     assert product1_data['description'] == 'Test Description'
     assert product1_data['price'] == 5.50
     assert product1_data['category'][0]['slug'] == 'test-category'
     assert product1_data['active'] is True
 
-    product2_data = next(product for product in data['product'] if product['name'] == 'Test Product 2')
-    assert product2_data['name'] == 'Test Product 2'
+    product2_data = next(product for product in data['product'] if product['title'] == 'Test Product 2')
+    assert product2_data['title'] == 'Test Product 2'
     assert product2_data['description'] == 'Test Description 2'
     assert product2_data['price'] == 59.50
     assert product2_data['category'][0]['slug'] == 'test-category-2'
