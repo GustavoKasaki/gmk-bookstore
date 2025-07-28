@@ -5,27 +5,22 @@ from django.contrib.auth.models import User
 from order.models import Order
 from product.models.product import Product
 
+
 @pytest.mark.django_db
 def test_order_creation():
     # User creation
     user = User.objects.create_user(
-        username="user",
-        email="user@email.com",
-        password="123456"
+        username="user", email="user@email.com", password="123456"
     )
 
     # First product creation
     product1 = Product.objects.create(
-        title="Test Product",
-        description="Test Description",
-        price=Decimal("5.50")
+        title="Test Product", description="Test Description", price=Decimal("5.50")
     )
 
     # Second product creation
     product2 = Product.objects.create(
-        title="Test Product 2",
-        description="Test Description 2",
-        price=Decimal("59.50")
+        title="Test Product 2", description="Test Description 2", price=Decimal("59.50")
     )
 
     # Order creation

@@ -4,8 +4,8 @@ from rest_framework import routers
 from order import viewsets
 
 router = routers.SimpleRouter()
-router.register(r'orders', viewsets.OrderViewSet, basename='orders')
+router.register(r"orders", viewsets.OrderViewSet, basename="orders")
 
 urlpatterns = [
-    path('', include(router.urls)),
+    path("", include(router.urls)),
 ]
