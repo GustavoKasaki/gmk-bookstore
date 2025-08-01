@@ -4,6 +4,7 @@ from decimal import Decimal
 from product.models import Product
 from product.models import Category
 
+
 @pytest.mark.django_db
 def test_product_creation():
     product = Product.objects.create(
@@ -15,6 +16,7 @@ def test_product_creation():
     assert product.name == "Test Product"
     assert product.description == "Test Description"
     assert product.price == Decimal("100.00")
+
 
 @pytest.mark.django_db
 def test_category_creation():
