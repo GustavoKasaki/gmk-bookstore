@@ -36,7 +36,7 @@ SECRET_KEY = (
 # DEBUG = True
 DEBUG = os.environ.get("DJANGO_DEBUG", "False") == "True"
 
-ALLOWED_HOSTS = ["localhost", "127.0.0.1", "gmk-bookstore.onrender.com"]
+ALLOWED_HOSTS = ["localhost", "127.0.0.1", "gmk-bookstore-app.onrender.com"]
 
 
 # Application definition
