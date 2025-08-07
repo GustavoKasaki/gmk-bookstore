@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 import os
 from pathlib import Path
 import dj_database_url
+import re
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -25,8 +26,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 INTERNAL_IPS = ["127.0.0.1"]
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ["DJANGO_SECRET_KEY"]
-
+SECRET_KEY = (
+    os.environ.get("DJANGO_SECRET_KEY")
+    or os.environ.get("SECRET_KEY")
+    or "insecure-fallback"
+)
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
@@ -89,6 +93,11 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
+db_url = os.environ.get("DATABASE_URL")
+
+if db_url and db_url.startswith("postgres://"):
+    db_url = re.sub(r"^postgres://", "postgresql://", db_url)
+
 '''
 DATABASES = {
     "default": {
@@ -103,7 +112,10 @@ DATABASES = {
 '''
 
 DATABASES = {
-    'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))
+    "default": dj_database_url.parse(
+        db_url or "sqlite:///db.sqlite3",
+        conn_max_age=600,
+    )
 }
 
 # Password validation
