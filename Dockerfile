@@ -64,5 +64,4 @@ COPY . /app/
 
 EXPOSE 8000
 
-# CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
 CMD ["bash", "-c", "python manage.py migrate && gunicorn bookstore.wsgi:application --bind 0.0.0.0:$PORT"]
